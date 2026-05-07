@@ -49,11 +49,6 @@ function toggleReadStatus(input: Book): ReadBookStatus {
     isRead: true,
   };
 }
-const myBook = {
-  title: "TypeScript Guide",
-  author: "Jane Doe",
-  publishedYear: 2024,
-};
 
 //Problem 6
 
@@ -80,7 +75,6 @@ class Student extends Person {
   }
 }
 
-const student = new Student("Alice", 20, "A");
 
 //Problem 7
 
