@@ -64,4 +64,4 @@ function processData(data: unknown) {
 
 ## Conclusion
 
-By learning these utility types we can execute the **DRY** principle effectively while also being efficient.
+By using `unknown` combined with type narrowing, we maintian the flexibility needed for unpredictable data without sacrificing the strict safety guarantees that make Typescript so powerful.
