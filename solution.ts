@@ -22,7 +22,7 @@ console.log(reverseString("Typescript"));
 //Problem 3
 
 type StringNumber = string | number;
-// Sample Input 1:
+
 function checkType(input: StringNumber) {
   if (typeof input === "string") {
     return "String";
@@ -34,44 +34,74 @@ function checkType(input: StringNumber) {
 console.log(checkType("Hello"));
 console.log(checkType(42));
 
-
 //Problem 4
+function getProperty<T, K extends keyof T>(object: T, key: K) {
+  return object[key];
+}
 
+const user = { id: 1, name: "John Doe", age: 21 };
+console.log(getProperty(user, "name"));
 
-// // Sample Input:
-// const user = { id: 1, name: "John Doe", age: 21 };
-// getProperty(user, "name");
+//Problem 5
 
-// // Sample Output:
-// "John Doe";
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+}
 
-// //Problem 5
+interface ReadBookStatus extends Book {
+  isRead: boolean;
+}
+function toggleReadStatus(input: Book): ReadBookStatus {
+  return {
+    ...input,
+    isRead: true,
+  };
+}
+const myBook = {
+  title: "TypeScript Guide",
+  author: "Jane Doe",
+  publishedYear: 2024,
+};
+console.log(toggleReadStatus(myBook));
 
-// // Sample Input:
-// const myBook = { title: "TypeScript Guide", author: "Jane Doe", publishedYear: 2024 };
-// toggleReadStatus(myBook);
+//Problem 6
 
-// // Sample Output:
-// {
-//   title: "TypeScript Guide",
-//   author: "Jane Doe",
-//   publishedYear: 2024,
-//   isRead: true
-// }
+class Person {
+  name: string;
+  age: number;
 
-// //Problem 6
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
 
-// // Sample Input:
-// const student = new Student("Alice", 20, "A");
-// student.getDetails();
+class Student extends Person {
+  grade: string;
 
-// // Sample Output:
-// "Name: Alice, Age: 20, Grade: A";
+  constructor(name: string, age: number, grade: string) {
+    super(name, age);
+    this.grade = grade;
+  }
 
-// //Problem 7
+  getDetails(): string {
+    return `Name: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`;
+  }
+}
 
-// // Sample Input:
-// getIntersection([1, 2, 3, 4, 5], [3, 4, 5, 6, 7])
+const student = new Student("Alice", 20, "A");
+console.log(student.getDetails());
 
-// // Sample Output:
-// [3, 4, 5]
+//Problem 7
+
+function getIntersection(set1: number[], set2: number[]) {
+  const _set1 = new Set(set1);
+  const _set2 = new Set(set2);
+
+  const intersectionSet = [..._set1].filter((number) => _set2.has(number));
+  return intersectionSet;
+}
+
+console.log(getIntersection([1, 1, 2, 4, 5], [1, 4, 5, 6, 7]));
