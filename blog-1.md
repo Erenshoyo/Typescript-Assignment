@@ -8,24 +8,24 @@ In web development or software development as a whole, one of the most fundament
 
 Imagine having a parent interface named `User`:
 
-\`\`\`typescript
+```typescript
 interface User{
 id: string;
 userName: string;
 email: string;
 phoneNumber: string;
 }
-\`\`\`
+```
 
 Now, if we need a type for the user profile, we usually are tempted to create a new interface with those type but that means when we have to update those, we will need to update multiple interfaces.
 
 This is where `Pick` utility type shines brightly, it creates a new type by selecting a specific set of properties from an existing interface
 
-\`\`\`typescript
+```typescript
 type PublicUser = Pick<User, "userName" | "role">;
 
 const displayUser: PublicProfile = {
 userName:"Tauhid",
 role:"admin"
 };
-\`\`\`
+```
