@@ -1,4 +1,6 @@
-# Keeping the code DRY with Pick and Omit in TypeScript.
+# Keeping the code DRY with `Pick` and `Omit` in TypeScript.
+
+How do Pick and Omit utility types prevent code duplication while creating specialized "slices" of a master interface? Discuss how this keeps your code DRY (Don't Repeat Yourself).
 
 ## Introduction
 
@@ -8,7 +10,7 @@ In web development or software development as a whole, one of the most fundament
 
 ### Pick
 
-Imagine having a parent interface named `User`:
+Imagine having a master interface named `User`:
 
 ```typescript
 interface User {
@@ -32,7 +34,7 @@ const displayUser: PublicProfile = {
 };
 ```
 
-Here, `PublicProfile` always remains synchronized with the parent `User` interface. This way we only need to change the parent interface and it updates everywhere.
+Here, `PublicProfile` always remains synchronized with the master `User` interface. This way we only need to change the master interface and it updates everywhere.
 
 ### Omit
 
