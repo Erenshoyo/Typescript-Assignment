@@ -6,26 +6,49 @@ In web development or software development as a whole, one of the most fundament
 
 ## Body Paragraph
 
+### Pick
+
 Imagine having a parent interface named `User`:
 
 ```typescript
-interface User{
-id: string;
-userName: string;
-email: string;
-phoneNumber: string;
+interface User {
+  id: string;
+  userName: string;
+  email: string;
+  phoneNumber: string;
 }
 ```
 
 Now, if we need a type for the user profile, we usually are tempted to create a new interface with those type but that means when we have to update those, we will need to update multiple interfaces.
 
-This is where `Pick` utility type shines brightly, it creates a new type by selecting a specific set of properties from an existing interface
+This is where `Pick` utility type shines brightly, it creates a new type by selecting a specific set of properties from an existing interface.
 
 ```typescript
 type PublicUser = Pick<User, "userName" | "role">;
 
 const displayUser: PublicProfile = {
-userName:"Tauhid",
-role:"admin"
+  userName: "Tauhid",
+  role: "admin",
 };
 ```
+
+Here, `PublicProfile` always remains synchronized with the parent `User` interface. This way we only need to change the parent interface and it updates everywhere.
+
+### Omit
+
+On the other hand, if we need to declare something we _don't_ want. We can use `Omit` utility type. It creates a new type by excluding the unneccessary properties.
+
+```typescript
+type UserCreationRequest = Omit<User, "id" | "createdAt">;
+
+const newUser: UserCreationRequest = {
+  username: "janedoe",
+  email: "jane@example.com",
+  passwordHash: "hashed_string",
+  role: "user",
+};
+```
+
+## Conclusion
+
+By learning these utility types we can execute the **DRY** principle effectively while also being efficient.
